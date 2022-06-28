@@ -1,5 +1,8 @@
 import React from 'react'
 import { Text, Reply } from '@botonic/react'
+import gotCarousel from './actions/got-carousel'
+import defaultAnswer from './actions/default-answer'
+import getWords from './actions/get-words'
 
 export const routes = [
   {
@@ -7,13 +10,27 @@ export const routes = [
     text: /hi/i,
     action: () => (
       <>
-        <Text>Hello! Nice to meet you ;)</Text>
-        <Text>
-          How can I help you?
-          <Reply payload="search">Search product</Reply>
-          <Reply payload="track">Track my order</Reply>
-        </Text>
+        <Text>Winter is coming...</Text>
+        <Reply payload='starter'>Check houses</Reply>
       </>
     )
+  }
+,
+  {
+    path: 'gotCarousel',
+    payload: /(starter)/,
+    action: gotCarousel
+  }
+,
+  {
+    path: 'getWords',
+    payload: /getWords/,
+    action: getWords
+  }
+,
+  {
+    path: 'defaultAnswer',
+    text: /.*/,
+    action: defaultAnswer
   }
 ]
