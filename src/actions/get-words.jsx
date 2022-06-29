@@ -6,9 +6,9 @@ import {Text, RequestContext} from '@botonic/react'
 export default class extends React.Component {
   static contextType = RequestContext;
 
-  static async botonicInit({ input, session, params, lastRoutePath }) {
+  static async botonicInit({input, session, params, lastRoutePath }) {
     const url =
-      'https://api.quotable.io/random'
+      'https://www.anapioficeandfire.com/api/houses/' + (parseInt(params.house)+1)
     const res = await fetch(url, {
       url: url,
       method: 'GET',
@@ -19,7 +19,7 @@ export default class extends React.Component {
   render() {
     return(
         <> 
-            <Text>{this.context.session.resp.content}</Text>
+            <Text>Words: {this.context.session.resp.words}</Text>
         </>
     )
 
